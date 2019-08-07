@@ -4,9 +4,9 @@ pipeline {
 		stage('Upload to AWS') {
 			steps {
 				withAWS(credentials:'IDofSystemCredentials') {
-					// do something
+					s3Upload(file:'index.html', bucket:'jenkinswebsite1900', path:'/')
 				}
-				s3Upload(file:'index.html', bucket:'jenkinswebsite1900', path:'/')
+				
 				sh 'echo "Hello World"'
 				sh '''
 					echo "Multiline shell steps works too"
