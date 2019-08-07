@@ -4,7 +4,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				withAWS(profile:'myProfile') {
+				withAWS(credentials:'IDofSystemCredentials') {
 					s3Upload(file:'index.html', bucket:'jenkinswebsite1900', path:'/')
 				}
 			}
