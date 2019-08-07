@@ -1,13 +1,14 @@
-    
 pipeline {
 	agent any
 	stages {
-		stage('Upload to AWS') {
+		stage('Build') {
 			steps {
-				withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-					s3Upload(file:'index.html', bucket:'jenkinswebsite1900', path:'/')
+				sh 'echo "Hello World"'
+				sh '''
+					echo "Multiline shell steps works too"
+					ls -lah
+				'''
 				}
 			}
 		}
 	}
-}
